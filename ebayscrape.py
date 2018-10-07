@@ -8,7 +8,7 @@ import argparse
 brand="PS3"
 
 def parse():
-	for i in range(5):
+	for i in range(2): # try twice
 		try:
 			url='http://www.ebay.co.uk/b/Sony-PS3-Video-Games/139973/bn_446843?rt=nc&_udhi=5&LH_Auction=1'
 			headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36'}
