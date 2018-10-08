@@ -3,7 +3,7 @@ import requests
 from pprint import pprint
 import unicodecsv as csv
 from traceback import format_exc
-import argparse
+
 
 brand="PS3"
 
