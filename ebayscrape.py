@@ -49,3 +49,41 @@ with open('%s-ebay-scraped-data.csv'%(brand),'wb') as csvfile:
 	writer.writeheader()
 	for data in scraped_data:
             writer.writerow(data)
+
+	
+import sys
+import pandas as pd
+import re
+import numpy as np
+
+
+game = pd.read_csv('EDGE9s10s.csv', encoding = 'latin1',usecols = ['Title','Format','Publisher','Issue','Score'])
+
+def formatToArray (text):
+    newText = filternonascii(text)
+    newArr = newText.split()
+    cleanArr = []
+    
+    for elem in newArr:
+        output1 = ''.join([s for s in elem if ord(s) != 44])
+        cleanArr.append(output1)
+    return pd.Series(dict(output=cleanArr))
+
+
+def filternonascii(text):
+    output = ''.join([s for s in text if ord(s) < 127])
+    return (output)
+
+def isPS3(array):
+    isThere = 0
+    for elem in array:
+        if elem == 'PS3':
+            isThere +=1 
+            break
+    return pd.Series(dict(output=int(isThere)))
+
+def onlyPS3(df):
+    game = pd
+    game['clean_format']=game['Format'].apply(filternonascii)
+    game['arr_format']=game['clean_format'].apply(formatToArray)
+    game['bool_PS3']=game['arr_format'].apply(isPS3)
